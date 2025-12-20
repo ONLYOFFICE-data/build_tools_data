@@ -111,6 +111,10 @@ CHROOT_EOF
     if [ "$ARCH" = "arm64" ]; then
         sudo rm -f "$SYSROOT_PATH/usr/bin/qemu-aarch64-static"
     fi
+
+    # Remove /dev from sysroot (device nodes break tar extraction)
+    sudo rm -rf "$SYSROOT_PATH/dev"
+    sudo mkdir -p "$SYSROOT_PATH/dev"
     
     echo "Optimizing size..."
     sudo rm -rf "$SYSROOT_PATH/usr/share/doc/"*
