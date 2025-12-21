@@ -95,6 +95,24 @@ apt install -y \
     libcups2-dev libnotify-dev \
     libx11-dev libxext-dev libxrender-dev \
     libicu-dev libicu55
+
+if [ "$(dpkg --print-architecture)" = "amd64" ]; then
+    echo "Installing ARM64 cross-compilers..."
+    if apt-cache show gcc-aarch64-linux-gnu &>/dev/null; then
+        echo "Installing gcc-aarch64-linux-gnu g++-aarch64-linux-gnu"
+        apt install -y gcc-aarch64-linux-gnu g++-aarch64-linux-gnu binutils-aarch64-linux-gnu
+    else
+        echo "Installing gcc-5-aarch64-linux-gnu g++-5-aarch64-linux-gnu"
+        apt install -y gcc-5-aarch64-linux-gnu g++-5-aarch64-linux-gnu binutils-aarch64-linux-gnu
+
+        ln -sf /usr/bin/aarch64-linux-gnu-gcc-5 /usr/bin/aarch64-linux-gnu-gcc
+        ln -sf /usr/bin/aarch64-linux-gnu-g++-5 /usr/bin/aarch64-linux-gnu-g++
+    fi
+    
+    echo "Installed aarch64 tools:"
+    ls -la /usr/bin/*aarch64* 2>/dev/null || echo "No aarch64 tools found"
+fi
+
 apt clean
 rm -rf /var/lib/apt/lists/*
 rm -rf /var/cache/apt/*
