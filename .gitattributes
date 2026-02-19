@@ -3,4 +3,5 @@ qt/qt-everywhere-src-5.15.2.tar.xz filter=lfs diff=lfs merge=lfs -text
 sysroot/ubuntu16-amd64-sysroot.tar.gz filter=lfs diff=lfs merge=lfs -text
 sysroot/ubuntu16-arm64-sysroot.tar.gz filter=lfs diff=lfs merge=lfs -text
 qt/qt_binary_5.9.9_gcc_64.7z filter=lfs diff=lfs merge=lfs -text
+qt/qt_binary_5.9.9_gcc_64_14.7z filter=lfs diff=lfs merge=lfs -text
 qt/qt_binary_5.9.9_gcc_arm64.7z filter=lfs diff=lfs merge=lfs -text
