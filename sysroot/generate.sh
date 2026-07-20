@@ -94,7 +94,8 @@ apt install -y \
     libglib2.0-dev libgl1-mesa-dev libglu1-mesa-dev \
     libcups2-dev libnotify-dev \
     libx11-dev libxext-dev libxrender-dev \
-    libicu-dev libicu55
+    libicu-dev libicu55 \
+    libcurl4-gnutls-dev
 
 if [ "$(dpkg --print-architecture)" = "amd64" ]; then
     echo "Installing ARM64 cross-compilers..."
